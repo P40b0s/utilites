@@ -28,6 +28,14 @@ public static class ResultExtension
         }
         return Result<T>.Err("Элемент не найден");
     }
+    public static IEnumerable<T> GetAll<T>(this List<T> list, Func<T, bool> predicate)
+    {
+        for(int i = 0; i < list.Count; i++)
+        {
+            if(predicate(list[i]))
+                yield return list[i];
+        }
+    }
     public static Result<T> GetLast<T>(this List<T> list, Func<T, bool> predicate)
     {
         for(int i = list.Count - 1; i >= 0; i--)
