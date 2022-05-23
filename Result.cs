@@ -63,6 +63,11 @@ public struct Result<T> : IResult<T, IError>
 }
 public struct Result<T,E> : IResult<T, E>
 {
+    public Result(T result)
+    {
+        value = result;
+        error = default(E);
+    }
     public Result(E error)
     {
         this.error = error;
@@ -91,6 +96,10 @@ public struct Result<T,E> : IResult<T, E>
     public static Result<T, E> Err(E error)
     {
         return new Result<T, E>(error);
+    }
+    public static Result<T, E> Ok(T value)
+    {
+        return new Result<T, E>(value);
     }
 }
 
