@@ -16,7 +16,7 @@ public struct Option<T>
     {
         get
         {
-            if (!HasValue) throw new InvalidOperationException();
+            //if (!HasValue) throw new InvalidOperationException();
 
             return ValueOrNull;
         }
